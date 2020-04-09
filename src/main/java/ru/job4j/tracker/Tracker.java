@@ -88,4 +88,16 @@ public class Tracker {
         }
         return res;
     }
+
+    public boolean delete(String id) {
+        int index = indexOf(id);
+        boolean res = false;
+        if (index != -1) {
+            System.arraycopy(items, (index + 1) , items, index, (position - index));
+            items[position - 1] = null;
+            position--;
+            res = true;
+        }
+        return res;
+    }
 }
