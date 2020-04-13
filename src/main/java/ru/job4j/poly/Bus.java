@@ -5,12 +5,13 @@ public class Bus implements Transport {
 
     @Override
     public void ride() {
-        this.ride();
+        System.out.println("The bus is going on a tour now.");
     }
 
     @Override
     public void passengers(int number) {
         pass = pass + number;
+        System.out.println("There are " + pass + " passengers in the bus.");
     }
 
     @Override
