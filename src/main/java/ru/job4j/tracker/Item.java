@@ -25,4 +25,11 @@ public class Item {
     public void setName(String name) {
         this.name = name;
     }
+
+    @Override
+    public String toString() {
+        String id = getId();
+        String name = getName();
+        return "ID: " + id + " name: " + name;
+    }
 }

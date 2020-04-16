@@ -1,6 +1,7 @@
 package ru.job4j.tracker;
 
 public class StartUI {
+
     public static void createItem(Input input, Tracker tracker) {
         System.out.println("=== Create a new Item ====");
         String name = input.askStr("Enter name: ");
@@ -15,22 +16,25 @@ public class StartUI {
         System.out.println("All Items:");
         for(int i = 0; i < res.length; i++) {
             Item item = res[i];
-            String id = item.getId();
-            String name = item.getName();
-            System.out.println(id + " " + name);
+            System.out.println(item);
         }
         System.out.println();
     }
 
     public static void replaceItem(Input input, Tracker tracker){
         String id = input.askStr("Enter ID of the Item:");
-        String name = input.askStr("Enter new name of the Item:");
-        Item item = new Item(name);
-        if (tracker.replace(id, item)) {
-            System.out.println("Item edited successfully.");
+        if (tracker.findById(id) != null) {
+            String name = input.askStr("Enter new name of the Item:");
+            Item item = new Item(name);
+            if (tracker.replace(id, item)) {
+                System.out.println("Item edited successfully.");
+            }
+            else {
+                System.out.println("Error");
+            }
         }
         else {
-            System.out.println("Error");
+            System.out.println("Item with id " + id + " not found.");
         }
         System.out.println();
     }
@@ -50,9 +54,8 @@ public class StartUI {
         String id = input.askStr("Enter ID of the Item:");
         Item item = tracker.findById(id);
         if (item != null) {
-            String name = item.getName();
             System.out.println("Item's found:");
-            System.out.println(id + " " + name);
+            System.out.println(item);
         }
         else {
             System.out.println("Item with id " + id + " not found.");
@@ -67,8 +70,7 @@ public class StartUI {
             System.out.println("All Items with name " + name + ":");
             for(int i = 0; i < res.length; i++) {
                 Item item = res[i];
-                String id = item.getId();
-                System.out.println(id + " " + name);
+                System.out.println(item);
             }
         }
         else {
