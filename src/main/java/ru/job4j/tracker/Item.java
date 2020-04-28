@@ -28,8 +28,6 @@ public class Item {
 
     @Override
     public String toString() {
-        String id = getId();
-        String name = getName();
-        return "ID: " + id + " name: " + name;
+        return String.format("ID = %s, name = %s", id, name);
     }
 }
